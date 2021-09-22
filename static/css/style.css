@@ -1,0 +1,12 @@
+body {
+    padding: 200px;
+    background-color: #082d70;
+}
+section{
+background: white;
+width: 500px;
+padding: 15px;
+border-radius: 10px;
+margin: auto;
+box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.37);
+}
