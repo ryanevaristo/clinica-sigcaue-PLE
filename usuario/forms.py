@@ -7,6 +7,7 @@ class UsuarioForm(UserCreationForm):
     idade = forms.CharField(max_length=3)
     cpf = forms.CharField(max_length=14 ,label='CPF')
     universidade = forms.CharField(max_length=100)
+    
 
     class Meta:
         model = User

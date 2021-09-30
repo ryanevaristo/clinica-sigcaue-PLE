@@ -6,5 +6,6 @@ urlpatterns = [
     path('login/submit', views.login_submit, name='submit'),
     path('',views.index, name="index"),
     path('registrar/', views.UserCreate.as_view(), name='cadastro'),
+    path('logout/', views.logout,name="logout")
     
 ]

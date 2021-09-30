@@ -14,14 +14,20 @@ def index(request):
     return render(request, 'index.html')
 
 
+@login_required
+def sair(request):
+    logout(request)
+    return HttpResponseRedirect('/login')
+
+
 class UserCreate(CreateView):
-    template_name = 'forms.html'
+    template_name = 'login/forms.html'
     form_class = UsuarioForm
     success_url = reverse_lazy('login')
 
 
 def login_user(request):
-    return render(request, 'login.html')
+    return render(request, 'login/login.html')
 
 
 @csrf_protect
