@@ -6,6 +6,8 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from braces.views import GroupRequiredMixin
+
 from .forms import UsuarioForm
 
 # Create your views here.
@@ -20,10 +22,13 @@ def sair(request):
     return HttpResponseRedirect('/login')
 
 
+
 class UserCreate(CreateView):
     template_name = 'login/forms.html'
     form_class = UsuarioForm
     success_url = reverse_lazy('login')
+
+
 
 
 def login_user(request):

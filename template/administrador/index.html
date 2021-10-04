@@ -1,0 +1,57 @@
+{%extends 'administrador/model-page.html'%}
+{% load static %}
+
+{% block conteudo %}
+<link rel="stylesheet" href="{% static 'css/card.css' %}">
+<h3>Inicio</h3>
+<hr>
+<div class="cards-list">
+
+  <a href="{% url 'cadastro-sec' %}">
+    <div class="card 2">
+      <div class="card_image">
+        <img  src="" />
+        </div>
+      <div class="card_title title-black">
+        <p>Cadastrar Secretária</p>
+      </div>
+    </div>
+  </a>
+  
+    
+  <a href="#">
+    <div class="card 2">
+      <div class="card_image">
+        <img  src="" />
+        </div>
+      <div class="card_title title-black">
+        <p>bloco 2</p>
+      </div>
+    </div>
+  </a>
+  <a href="#">
+    <div class="card 2">
+      <div class="card_image">
+        <img  src="" />
+        </div>
+      <div class="card_title title-black">
+        <p> bloco 3</p>
+      </div>
+    </div>
+  </a>
+
+  <a href="#">
+    <div class="card 2">
+      <div class="card_image">
+        <img  src="" />
+        </div>
+      <div class="card_title title-black">
+        <p style="color: black;"> bloco 3</p>
+      </div>
+    </div>
+  </a>
+  
+  
+    </div>
+
+{% endblock %}

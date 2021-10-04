@@ -29,6 +29,7 @@ from usuario.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("usuario.urls"), name='login-pack'),
+    path('',include("administrador.urls"), name="adm-pack"),
     
 
 

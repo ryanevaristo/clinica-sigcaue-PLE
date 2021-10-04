@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'usuario',
+    'secretaria',
+    'administrador',
     'crispy_forms',
     'storages',
     'django_filters',
@@ -137,9 +139,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# USER MODEL
+
 
 
 django_heroku.settings(locals())
+
 
 
 
