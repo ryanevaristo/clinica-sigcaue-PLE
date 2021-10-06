@@ -7,13 +7,17 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from braces.views import GroupRequiredMixin
+from .models import Protocolo
 
-from .forms import UsuarioForm
+from .forms import UsuarioForm, ProtocoloForm
 
 # Create your views here.
 @login_required(login_url='/login/')
 def index(request):
-    return render(request, 'index.html')
+    dashboard_pesquisador = render(request, 'index.html')
+
+
+    return dashboard_pesquisador
 
 
 @login_required
@@ -40,13 +44,22 @@ def login_submit(request):
     if request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username)
-        print(password)
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request,user)
+        
         return redirect('/')
     else:
         messages.error(request, 'Usuário/Senha inválidos. Favor tentar novamente.')
     return redirect('/login/')
 
+
+
+
+
+
+
+class ProtocoloCreate(CreateView):
+    template_name = 'administrador/forms-secretaria.html'
+    form_class = ProtocoloForm
+    success_url = reverse_lazy('index')
