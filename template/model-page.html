@@ -14,6 +14,7 @@
 
         <title>Banco de Dados</title>
     </head>
+{% if request.user.groups.all.0.name == "Pesquisador" %}
     <body id="body-pd">
         <header class="header" id="header">
             <div class="header__toggle">
@@ -40,14 +41,14 @@
                         </a>
 
 
-                        <a href="#" class="nav__link">
+                        <a href="{% url 'Protocolo-create' %}" class="nav__link">
                             <i class='bx bx-bookmark nav__icon' ></i>
-                            <span class="nav__name">Relatorio Mensal</span>
+                            <span class="nav__name">Cadastrar Protocolo</span>
                         </a>
 
                         <a href="#" class="nav__link">
                             <i class='bx bx-folder nav__icon' ></i>
-                            <span class="nav__name">Relatório Anual</span>
+                            <span class="nav__name">em desenvolvimento</span>
                         </a>
 
                     </div>
@@ -55,10 +56,59 @@
 
                 <a href="login/" class="nav__link">
                     <i class='bx bx-log-out nav__icon' ></i>
-                    <span class="nav__name">Log Out</span>
+                    <span class="nav__name">Sair</span>
                 </a>
             </nav>
         </div>
+
+    {% elif request.user.groups.all.0.name == "Administrador" %}
+    <body id="body-pd">
+        <header class="header" id="header">
+            <div class="header__toggle">
+                <i class='bx bx-menu' id="header-toggle"></i>
+            </div>
+
+            <div class="header__img">
+                <img src="#" alt="">
+            </div>
+        </header>
+
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div>
+                    <a href="" class="nav__logo">
+                        <i class='bx bx-layer nav__logo-icon'></i>
+                        <span class="nav__logo-name">Gerenciador</span>
+                    </a>
+
+                    <div class="nav__list">
+                        <a href="{% url 'index' %}" class="nav__link active">
+                        <i class='bx bx-grid-alt nav__icon' ></i>
+                            <span class="nav__name">Inicio</span>
+                        </a>
+
+
+                        <a href="{% url 'cadastro-sec' %}" class="nav__link">
+                            <i class='bx bx-bookmark nav__icon' ></i>
+                            <span class="nav__name">Cadastrar Secretária</span>
+                        </a>
+
+                        <a href="#" class="nav__link">
+                            <i class='bx bx-folder nav__icon' ></i>
+                            <span class="nav__name">em desenvolvimento</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <a href="login/" class="nav__link">
+                    <i class='bx bx-log-out nav__icon' ></i>
+                    <span class="nav__name">Sair</span>
+                </a>
+            </nav>
+        </div>
+
+    {% endif %}
         {% block conteudo%}
             <h1>Components</h1>
         {% endblock %}

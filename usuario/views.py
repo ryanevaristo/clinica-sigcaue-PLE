@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views.generic.edit import CreateView
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from braces.views import GroupRequiredMixin
@@ -16,14 +16,13 @@ from .forms import UsuarioForm, ProtocoloForm
 def index(request):
     dashboard_pesquisador = render(request, 'index.html')
 
-
     return dashboard_pesquisador
 
 
 @login_required
 def sair(request):
     logout(request)
-    return HttpResponseRedirect('/login')
+    return redirect('/login')
 
 
 
@@ -31,6 +30,16 @@ class UserCreate(CreateView):
     template_name = 'login/forms.html'
     form_class = UsuarioForm
     success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+    
+        grupo = get_object_or_404(Group, name="Pesquisador")
+
+        url = super().form_valid(form)
+        self.object.groups.add(grupo)
+        self.object.save()
+
+        return url
 
 
 
@@ -47,7 +56,6 @@ def login_submit(request):
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request,user)
-        
         return redirect('/')
     else:
         messages.error(request, 'Usuário/Senha inválidos. Favor tentar novamente.')

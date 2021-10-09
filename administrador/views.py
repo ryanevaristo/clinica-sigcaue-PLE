@@ -8,17 +8,11 @@ from django.contrib.auth.models import Group, User
 # Create your views here.
 
 
-@login_required(login_url='/login/')
-def index(request):
-    return render(request, 'administrador/index.html')
-
-
-
 class SecretariaCreate(CreateView):
     login_required = True
     template_name = 'administrador/forms-secretaria.html'
     form_class = SecretariaForm
-    success_url = reverse_lazy('index-adm')
+    success_url = reverse_lazy('index')
 
     def form_valid(self, form):
 
