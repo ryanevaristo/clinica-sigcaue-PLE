@@ -14,7 +14,7 @@
 
         <title>Banco de Dados</title>
     </head>
-{% if request.user.groups.all.0.name == "Pesquisador" %}
+
     <body id="body-pd">
         <header class="header" id="header">
             <div class="header__toggle">
@@ -25,7 +25,7 @@
                 <img src="#" alt="">
             </div>
         </header>
-
+    {% if request.user.groups.all.0.name == "Pesquisador" %}
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div>
@@ -62,17 +62,6 @@
         </div>
 
     {% elif request.user.groups.all.0.name == "Administrador" %}
-    <body id="body-pd">
-        <header class="header" id="header">
-            <div class="header__toggle">
-                <i class='bx bx-menu' id="header-toggle"></i>
-            </div>
-
-            <div class="header__img">
-                <img src="#" alt="">
-            </div>
-        </header>
-
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div>
