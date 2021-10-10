@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -33,7 +33,7 @@ class UserCreate(CreateView):
 
     def form_valid(self, form):
     
-        grupo = get_object_or_404(Group, name="Secretária")
+        grupo = get_object_or_404(Group, name="Pesquisador")
 
         url = super().form_valid(form)
         self.object.groups.add(grupo)
