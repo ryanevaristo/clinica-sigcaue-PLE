@@ -33,14 +33,13 @@ class UserCreate(CreateView):
 
     def form_valid(self, form):
     
-        grupo = get_object_or_404(Group, name="Pesquisador")
+        grupo = get_object_or_404(Group, name="Secretária")
 
         url = super().form_valid(form)
         self.object.groups.add(grupo)
         self.object.save()
 
         return url
-
 
 
 
