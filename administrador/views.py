@@ -35,11 +35,10 @@ class SecretariaUpdate(UpdateView):
 
 
 
-
 class SecretariaDelete(DeleteView):
     model = User
     form_class = SecretariaForm()
-    template_name = 'form-excluir.html'
-    success_url = reverse_lazy('excluir_produto')
+    template_name = 'administrador/form-excluir.html'
+    success_url = reverse_lazy('index')
 
 
