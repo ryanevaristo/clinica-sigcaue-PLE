@@ -11,6 +11,9 @@ from .models import Protocolo
 
 from .forms import UsuarioForm, ProtocoloForm
 
+
+
+
 # Create your views here.
 @login_required(login_url='/login/')
 def index(request):
