@@ -46,12 +46,18 @@
   }
   
   .title-white {
-    color: white;
+    color: #7a7676;
     text-shadow: black;
+    box-shadow:  2px 2px 2px 2px ;
+  }
+  #p{
+    color: rgb(143, 139, 139);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.37);
   }
   
   .title-black {
-    color: black;
+    color: rgb(58, 52, 52);
+    
   }
   
   @media all and (max-width: 500px) {

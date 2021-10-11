@@ -21,11 +21,10 @@ def index(request):
 
     return dashboard_pesquisador
 
-
-@login_required
-def sair(request):
+@login_required(login_url='/login/')
+def logout_user(request):
     logout(request)
-    return redirect('/login')
+    return redirect('/')
 
 
 
