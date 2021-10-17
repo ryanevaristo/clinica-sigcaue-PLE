@@ -69,6 +69,6 @@ def login_submit(request):
 
 
 class ProtocoloCreate(CreateView):
-    template_name = 'administrador/forms-secretaria.html'
+    template_name = 'pesquisador/forms-protocolo.html'
     form_class = ProtocoloForm
     success_url = reverse_lazy('index')
