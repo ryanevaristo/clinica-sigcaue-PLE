@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView , UpdateView, Deleteview
 from django.contrib.auth.models import User, Group
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -71,4 +71,16 @@ def login_submit(request):
 class ProtocoloCreate(CreateView):
     template_name = 'pesquisador/forms-protocolo.html'
     form_class = ProtocoloForm
+    success_url = reverse_lazy('index')
+
+
+
+class ProtocoloDelete(Deleteview):
+   model= Protocolo
+   template_name = 'pesquisador/forms-excluir.html'
+   success_url = reverse_lazy('index')
+
+class AtividadeDelete(Deleteview):
+    model = Atividade
+    template_name = 'pesquisador/forms-excluir.html'
     success_url = reverse_lazy('index')

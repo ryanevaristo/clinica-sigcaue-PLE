@@ -1,5 +1,6 @@
 from django.urls import path, include
 from usuario import views
+from .views import ProtocoloDelete,AtividadeDelete
 
 urlpatterns = [
     path('login/', views.login_user, name="login"),
@@ -8,5 +9,8 @@ urlpatterns = [
     path('registrar/', views.UserCreate.as_view(), name='registrar'),
     path('logout/', views.logout_user,name="logout"),
     path('cadastrar/protocolo/', views.ProtocoloCreate.as_view(), name="Protocolo-create")
+    path('excluir/protocolo/<int:pk>/', views.ProtocoloDelete.as_view(), name='excluir-protocolo'),
+    path('excluir/protocolo/', views.ProtocoloDelete.as_view(), name='excluir-protocolo'),
+
     
 ]
