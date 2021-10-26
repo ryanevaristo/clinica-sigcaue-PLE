@@ -31,6 +31,12 @@
           <div class="form-group col-md-4 mb-0">
             {{ form.status|as_crispy_field }}
           </div>
+          <div class="form-group col-md-4 mb-1">
+            {{ form.data_inicio|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-4 mb-1">
+            {{ form.data_termino|as_crispy_field }}
+          </div>
         </div>
         <hr>
         <button type="submit" class="btn btn-primary">Cadastrar</button>

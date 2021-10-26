@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.views.generic.edit import CreateView , UpdateView, Deleteview
+from django.views.generic.base import TemplateResponseMixin
+from django.views.generic.edit import CreateView , UpdateView, DeleteView
+from django.views.generic.list import ListView
 from django.contrib.auth.models import User, Group
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -74,13 +76,19 @@ class ProtocoloCreate(CreateView):
     success_url = reverse_lazy('index')
 
 
+class ProtocoloUpdate(UpdateView):
+    template_name = 'pesquisador/forms-protocolo.html'
+    model = Protocolo
+    fields = ['justificativa', 'bioterio', 'especie', 'quantidade','resumo', 
+    'resumo_en', 'status', 'data_inicio', 'data_termino']
+    success_url = reverse_lazy('index')
 
-class ProtocoloDelete(Deleteview):
-   model= Protocolo
-   template_name = 'pesquisador/forms-excluir.html'
+
+class ProtocoloDelete(DeleteView):
+   model = Protocolo
+   template_name = 'administrador/form-excluir.html'
    success_url = reverse_lazy('index')
 
-class AtividadeDelete(Deleteview):
-    model = Atividade
-    template_name = 'pesquisador/forms-excluir.html'
-    success_url = reverse_lazy('index')
+class ProtocoloList(ListView):
+    model = Protocolo
+    template_name = 'pesquisador/lista-protocolo.html'

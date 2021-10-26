@@ -1,0 +1,48 @@
+{% extends 'model-page.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+
+<style>
+    .table-responsive {
+        width: 65%;
+    }
+</style>
+
+<h3>Lista de Protocolo</h3>
+<hr>
+<a href="{% url 'cadastrar-protocolo' %}" class="btn btn-primary btn-sm">Cadastrar</a>
+<div class="table-responsive">
+
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Justificativa</th>
+            <th>Biotério</th>
+            <th>Espécie</th>
+            <th>Qtd</th>
+            <th>Opções</th>
+        </tr>
+
+        {% for protocolo in object_list %}
+        <tr>
+            <td>{{ protocolo.id }}</td>
+            <td>{{ protocolo.justificativa }}</td>
+            <td>{{ protocolo.bioterio }}</td>
+            <td>{{ protocolo.especie }}</td>
+            <td>{{ protocolo.quantidade }}</td>
+            <td>
+             <a href="{% url 'editar-protocolo' protocolo.pk %}" class="btn btn-warning btn-sm" >Editar</a>
+             <a href="{% url 'excluir-protocolo' protocolo.pk %}" class="btn btn-danger btn-sm" >Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">Nenhum protocolo registrado.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
