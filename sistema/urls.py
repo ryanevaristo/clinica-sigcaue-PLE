@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from usuario.views import index
+from Pesquisador.views import index
 
 
 
@@ -28,8 +28,9 @@ from usuario.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("usuario.urls"), name='login-pack'),
+    path('', include("Pesquisador.urls"), name='login-pack'),
     path('',include("administrador.urls"), name="adm-pack"),
+    path('',include("secretaria.urls"), name="secretaria-pack"),
     
 
 

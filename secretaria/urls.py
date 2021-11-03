@@ -1,9 +1,9 @@
 from django.urls import path, include
-from administrador import views
+from secretaria import views
 
 urlpatterns = [
-
-    path('dashboard-adm/',views.index, name="index-adm"),
-    path('cadastro/secretaria', views.SecretariaCreate.as_view(), name="cadastro-sec"),
+    path('listar/pesquisador/', views.PesquisadorList.as_view(), name="lista-pesq"),
+    path('editar/pesquisador/<int:pk>', views.PesquisadorUpdate.as_view(), name="update-pesq"),
+    path('excluir/pesquisador/<int:pk>', views.PesquisadorUpdate.as_view(), name="delete-pesq"),
     
 ]

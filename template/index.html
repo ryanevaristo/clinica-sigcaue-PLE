@@ -106,6 +106,57 @@
   
 </div>
 
+
+{% elif request.user.groups.all.0.name == "Secretária" %}
+<h3>Bem vindo Administrador</h3>
+<hr>
+<div class="cards-list">
+
+  <a href="{% url 'index' %}">
+    <div class="card 2" style="background-color: black;">
+      <div class="card_image">
+        <img  src="{% static 'img/secretaria/secretaria.png' %}" />
+        </div>
+      <div class="card_title ">
+      </div>
+    </div>
+  </a>
+  
+    
+  <a href="#">
+    <div class="card 2">
+      <div class="card_image">
+        <img  src="" />
+        </div>
+      <div class="card_title title-black">
+        <p>em desenvolvimento</p>
+      </div>
+    </div>
+  </a>
+  <a href="#">
+    <div class="card 2">
+      <div class="card_image">
+        <img  src="" />
+        </div>
+      <div class="card_title title-black">
+        <p> em desenvolvimento</p>
+      </div>
+    </div>
+  </a>
+
+  <a href="#">
+    <div class="card 2">
+      <div class="card_image">
+        <img  src="" />
+        </div>
+      <div class="card_title title-black">
+        <p style="color: black;"> em desenvolvimento</p>
+      </div>
+    </div>
+  </a>
+  
+</div>
+
   
 {% else %}
   

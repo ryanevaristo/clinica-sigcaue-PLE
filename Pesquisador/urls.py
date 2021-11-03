@@ -1,5 +1,5 @@
 from django.urls import path, include
-from usuario import views
+from Pesquisador import views
 
 urlpatterns = [
     path('login/', views.login_user, name="login"),

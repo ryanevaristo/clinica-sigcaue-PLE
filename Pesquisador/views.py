@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 from braces.views import GroupRequiredMixin
 from .models import Protocolo
 
-from .forms import UsuarioForm, ProtocoloForm
+from .forms import PesquisadorForm, ProtocoloForm
 
 
 
@@ -32,7 +32,7 @@ def logout_user(request):
 
 class UserCreate(CreateView):
     template_name = 'login/forms.html'
-    form_class = UsuarioForm
+    form_class = PesquisadorForm
     success_url = reverse_lazy('login')
 
     def form_valid(self, form):

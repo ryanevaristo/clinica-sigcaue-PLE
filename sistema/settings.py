@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'usuario',
+    'Pesquisador',
     'secretaria',
     'administrador',
     'crispy_forms',
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django_filters',
 ]
 
-
+AUTH_USER_MODEL = "Pesquisador.User"
 
 
 
