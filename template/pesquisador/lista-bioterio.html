@@ -1,0 +1,54 @@
+{% extends 'model-page.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+
+<style>
+    .table-responsive {
+        width: 65%;
+    }
+</style>
+
+<h3>Lista de Bioterio</h3>
+<hr>
+<a href="{% url 'cadastrar-bioterio' %}" class="btn btn-primary btn-sm">Cadastrar</a>
+<div class="table-responsive">
+
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>nome_bioterio</th>
+            <th>cnpj</th>
+            <th>rua</th>
+            <th>numero</th>
+            <th>bairro</th>
+            <th>cidade</th>
+            <th>estado</th>
+            <th>Opções</th>
+        </tr>
+
+        {% for Bioterio in object_list %}
+        <tr>
+            <td>{{ Bioterio.id }}</td>
+            <td>{{ Bioterio.nome_bioterio }}</td>
+            <td>{{ Bioterio.cnpj }}</td>
+            <td>{{ Bioterio.rua }}</td>
+            <td>{{ Bioterio.numero }}</td>
+            <td>{{ Bioterio.bairro }}</td>
+            <td>{{ Bioterio.cidade }}</td>
+            <td>{{ Bioterio.estado }}</td>
+            <td>
+                <a href="{% url 'editar-bioterio' Bioterio.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'excluir-bioterio' Bioterio.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">Nenhum Bioterio registrado.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

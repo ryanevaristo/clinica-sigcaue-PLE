@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import templatize
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -9,9 +10,9 @@ from django.contrib.auth.models import User, Group
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from braces.views import GroupRequiredMixin
-from .models import Protocolo
+from .models import Bioterio, Protocolo
 
-from .forms import UsuarioForm, ProtocoloForm
+from .forms import BioterioForm, UsuarioForm, ProtocoloForm
 
 
 
@@ -79,7 +80,7 @@ class ProtocoloCreate(CreateView):
 class ProtocoloUpdate(UpdateView):
     template_name = 'pesquisador/forms-protocolo.html'
     model = Protocolo
-    fields = ['justificativa', 'bioterio', 'especie', 'quantidade','resumo', 
+    fields = ['titulo_protocolo', 'justificativa', 'especie', 'quantidade','resumo', 
     'resumo_en', 'status', 'data_inicio', 'data_termino']
     success_url = reverse_lazy('index')
 
@@ -92,3 +93,27 @@ class ProtocoloDelete(DeleteView):
 class ProtocoloList(ListView):
     model = Protocolo
     template_name = 'pesquisador/lista-protocolo.html'
+
+
+
+
+class BioterioCreate(CreateView):
+    template_name = 'pesquisador/forms-bioterio.html'
+    form_class = BioterioForm
+    def get_success_url(self):
+        return reverse_lazy('index')
+
+class BioterioUpdate(UpdateView):
+    template_name = 'pesquisador/forms-bioterio.html'
+    model = Bioterio
+    fields = ['nome_bioterio', 'cnpj', 'rua','numero', 'bairro', 'cidade', 'estado']
+    success_url = reverse_lazy('index')
+
+class BioterioDelete(DeleteView):
+    model = Bioterio
+    template_name = 'administrador/form-excluir.html'
+    success_url = reverse_lazy('index')
+
+class BioterioList(ListView):
+    model = Bioterio
+    template_name = 'pesquisador/lista-bioterio.html'

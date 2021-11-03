@@ -1,8 +1,10 @@
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.db.models import fields
 from django.forms import ModelForm
 from .models import Protocolo
+from .models import Bioterio
 from django import forms
 
 class UsuarioForm(UserCreationForm):
@@ -27,11 +29,17 @@ class ProtocoloForm(ModelForm):
  
     class Meta:
         model = Protocolo
-        fields = ['justificativa', 'bioterio', 'especie', 'quantidade',
+        fields = ['titulo_protocolo','justificativa', 'especie', 'quantidade',
         'resumo', 'resumo_en','status', 'data_inicio', 'data_termino'
         ]
         widgets = {
             'data_inicio': DateInput(),
             'data_termino': DateInput(),
         }
-  
+
+class BioterioForm(ModelForm):
+
+    class Meta:
+        model = Bioterio
+        fields = ['nome_bioterio', 'cnpj', 'rua', 'numero', 'bairro', 'cidade', 'estado'
+        ]
