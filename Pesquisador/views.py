@@ -1,23 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.utils.translation import templatize
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.views.generic.base import TemplateResponseMixin
 from django.views.generic.edit import CreateView , UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User, Group
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from braces.views import GroupRequiredMixin
 from .models import Bioterio, Protocolo
-
-<<<<<<< HEAD:Pesquisador/views.py
-from .forms import PesquisadorForm, ProtocoloForm
-=======
-from .forms import BioterioForm, UsuarioForm, ProtocoloForm
->>>>>>> 72af12e09b58591d66388e176adbfac57633e635:usuario/views.py
-
+from .forms import BioterioForm, ProtocoloForm, PesquisadorForm
 
 
 

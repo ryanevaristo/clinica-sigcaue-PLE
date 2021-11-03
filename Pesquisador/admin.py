@@ -7,8 +7,8 @@ from Pesquisador.forms import PesquisadorForm, PesquisadorChangeForm
 
 @admin.register(Protocolo)
 class ProtocoloAdmin(admin.ModelAdmin):
-    list_display = ['justificativa', 'bioterio','quantidade','data_inicio','data_termino']
-    list_filter = ['bioterio']
+    list_display = ['titulo_protocolo','justificativa','quantidade','data_inicio','data_termino']
+    list_filter = ['titulo_protocolo']
 
         
 

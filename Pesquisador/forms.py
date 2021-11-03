@@ -1,15 +1,8 @@
 
-<<<<<<< HEAD:Pesquisador/forms.py
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from Pesquisador.models import User
-=======
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django.db.models import fields
->>>>>>> 72af12e09b58591d66388e176adbfac57633e635:usuario/forms.py
 from django.forms import ModelForm
-from .models import Protocolo
-from .models import Bioterio
+from .models import Protocolo, Bioterio,User
 from django import forms
 
 class PesquisadorForm(UserCreationForm):
