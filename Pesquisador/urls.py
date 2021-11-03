@@ -11,5 +11,11 @@ urlpatterns = [
     path('editar/protocolo/<int:pk>/', views.ProtocoloUpdate.as_view(), name="editar-protocolo"),
     path('excluir/protocolo/<int:pk>/', views.ProtocoloDelete.as_view(), name="excluir-protocolo"),
     path('lista/protocolo/', views.ProtocoloList.as_view(), name="lista-protocolo"),
-    
+
+
+    path('cadastrar/bioterio/', views.BioterioCreate.as_view(), name="cadastrar-bioterio"),
+    path('editar/bioterio/<int:pk>/', views.BioterioUpdate.as_view(), name="editar-bioterio"),   
+    path('excluir/bioterio/<int:pk>/', views.BioterioDelete.as_view(), name="excluir-bioterio"),
+    path('lista/bioterio/', views.BioterioList.as_view(), name="lista-bioterio"),
+
 ]
