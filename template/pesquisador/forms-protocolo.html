@@ -3,6 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block conteudo %}
+{% if request.user.groups.all.0.name == "Pesquisador" %}
 
     <div class="container" style="margin-bottom: 100px;">
     <p class="lead">
@@ -42,4 +43,11 @@
         <button type="submit" class="btn btn-primary">Cadastrar</button>
       </form>
     </div>
+
+  {% else %}
+    <a href="{% url 'logout' %}" class="btn btn-primary" >Logout</a>
+    <hr>
+    <h2>Você não tem permissão por favor faça o login como Pesquisador</h2>
+
+{% endif %}
 {% endblock %}

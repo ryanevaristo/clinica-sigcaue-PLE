@@ -1,14 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import Group
 
 
 # Create your models here.
 
 class User(AbstractUser):
-    email = models.EmailField(max_length=100,null=True)
-    idade = models.CharField(max_length=3,null=True)
-    cpf = models.CharField(max_length=14 ,verbose_name='CPF',null=True)
+    email = models.EmailField(max_length=100,null=True, blank=True)
+    idade = models.CharField(max_length=3,null=True, blank=True)
+    cpf = models.CharField(max_length=14 ,verbose_name='CPF',null=True,blank=True)
     universidade = models.CharField(max_length=100,null=True)
+    is_staff = models.BooleanField(default=False, blank=True)
+    is_avaliador = models.BooleanField(default=False, blank=True, null=True)
+    is_presidente = models.BooleanField(default=False, blank=True)
 
 
 class Protocolo(models.Model):

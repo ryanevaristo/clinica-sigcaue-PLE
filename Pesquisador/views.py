@@ -29,7 +29,7 @@ def logout_user(request):
 class UserCreate(CreateView):
     template_name = 'login/forms.html'
     form_class = PesquisadorForm
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('index')
 
     def form_valid(self, form):
     

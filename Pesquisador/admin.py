@@ -19,5 +19,6 @@ class UserAdmin(auth_admin.UserAdmin):
     add_form = PesquisadorForm
     model = User
     fieldsets = auth_admin.UserAdmin.fieldsets + (
-        ("Campos Personalizados", {"fields": ("idade","cpf","universidade",)}),
+        ("Campos Personalizados", {"fields": ("idade","cpf","universidade","is_avaliador",
+        "is_presidente",)}),
     )

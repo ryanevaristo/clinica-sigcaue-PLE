@@ -10,11 +10,10 @@
     }
 </style>
 
-{% if request.user.groups.all.0.name == "Administrador" %}
+{% if request.user.groups.all.0.name == "Secretária" %}
 
 <h3>Lista de Pesquisadores</h3>
 <hr>
-<a href="{% url 'cadastrar-protocolo' %}" class="btn btn-primary btn-sm">Cadastrar</a>
 <div class="table-responsive">
 
     <table class="table table-striped">
@@ -24,8 +23,9 @@
             <th>idade</th>
             <th>cpf</th>
             <th>universidade</th>
+            <th>Grupo</th>
             <th>Status</th>
-            <th>Opções</th>
+            <th>avaliador</th>
         </tr>
 
         {% for pesquisador in object_list %}
@@ -37,9 +37,9 @@
             <td>{{ pesquisador.universidade }}</td>
             <td>{{ pesquisador.groups.all }}</td>
             <td>
-                <a href=" " class="btn btn-warning btn-sm" >Editar</a>
-                <a href=" " class="btn btn-danger btn-sm" >Excluir</a>
+                <a href="{% url 'update-pesq' pesquisador.pk %}" class="btn btn-success btn-sm">Adicionar Status</a>
             </td>
+            <td>{{pesquisador.is_avaliador}}</td>
         </tr>
         {% empty %}
         <tr>
@@ -48,6 +48,10 @@
         {% endfor %}
     </table>
 </div>
+{% else %}
+    <a href="{% url 'logout' %}" class="btn btn-primary" >Logout</a>
+    <hr>
+    <h2>Você não tem permissão por favor faça o login como secretária</h2>
 
 {% endif %}
 

@@ -16,15 +16,28 @@ class PesquisadorList(ListView):
     template_name = 'secretaria/lista-pesquisador.html'
 
     def get_queryset(self):
-        return User.objects.all()
+        return User.objects.filter(groups=2)
+    
+
+        
 
 
 class PesquisadorUpdate(UpdateView):
     template_name = 'secretaria/forms-pesquisador.html'
     model = User
     fields = ['username', 'email', 'idade', 'cpf','universidade', 
-    'groups',]
+    'groups','is_avaliador',]
     success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        
+        grupo = get_object_or_404(Group, name="Pesquisador")
+
+        url = super().form_valid(form)
+        self.object.groups.add(grupo)
+        self.object.save()
+
+        return url
 
 
 

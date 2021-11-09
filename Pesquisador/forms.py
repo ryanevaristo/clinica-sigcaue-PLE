@@ -10,10 +10,12 @@ class PesquisadorForm(UserCreationForm):
     idade = forms.CharField(max_length=3)
     cpf = forms.CharField(max_length=14 ,label='CPF')
     universidade = forms.CharField(max_length=100)
+    is_avaliador = forms.BooleanField(label="Avaliador")
     
     class Meta:
         model = User
-        fields = ['username','email','idade','cpf','universidade','password1','password2']
+        fields = ['username','email','idade','cpf','universidade',
+        'is_avaliador','password1','password2']
 
 
 class PesquisadorChangeForm(UserChangeForm):
@@ -21,9 +23,11 @@ class PesquisadorChangeForm(UserChangeForm):
     idade = forms.CharField(max_length=3)
     cpf = forms.CharField(max_length=14 ,label='CPF')
     universidade = forms.CharField(max_length=100)
+    is_avaliador = forms.BooleanField(label="Avaliador")
     class Meta:
         model = User
-        fields = ['username','email','idade','cpf','universidade']
+        fields = ['username','email','idade','cpf','universidade',
+        'is_avaliador']
 
 
 class DateInput(forms.DateInput):

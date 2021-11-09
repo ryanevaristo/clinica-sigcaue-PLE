@@ -66,20 +66,23 @@
       <div class="card_image">
         <img  src="{% static 'img/secretaria/secretaria.png' %}" />
         </div>
+        <div class="card_title title-black">
+          <p style="color: black; "> Secretária</p>
+        </div>
       <div class="card_title ">
       </div>
     </div>
   </a>
   
     
-  <a href="#">
-    <div class="card 2">
+  <a href="{% url 'lista-bioterio' %}">
+    <div class="card 2" style="background-color: black;">
       <div class="card_image">
-        <img  src="" />
+        <img  src="{% static 'img/admin/bioterio.png' %}"/>
         </div>
-      <div class="card_title title-black">
-        <p>em desenvolvimento</p>
-      </div>
+        <div class="card_title title-black">
+          <p style="color: black;"> Bioterios</p>
+        </div>
     </div>
   </a>
   <a href="#">
@@ -115,7 +118,10 @@
   <a href="{% url 'index' %}">
     <div class="card 2" style="background-color: black;">
       <div class="card_image">
-        <img  src="{% static 'img/secretaria/secretaria.png' %}" />
+        <img  src="{% static 'img/secretaria/avaliador.png' %}" />
+        </div>
+        <div class="card_title title-black">
+          <p style="color: black;"> avaliador</p>
         </div>
       <div class="card_title ">
       </div>
@@ -129,7 +135,7 @@
         <img  src="" />
         </div>
       <div class="card_title title-black">
-        <p>em desenvolvimento</p>
+        <p>Em desenvolvimento</p>
       </div>
     </div>
   </a>
