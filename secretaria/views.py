@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from Pesquisador.forms import PesquisadorForm
 from Pesquisador.models import User
 from django.contrib.auth.models import Group
+from django.views.decorators.csrf import csrf_protect
+
 
 
 # Create your views here.
@@ -31,16 +33,14 @@ class PesquisadorUpdate(UpdateView):
 
     def form_valid(self, form):
         
-        grupo = get_object_or_404(Group, name="Pesquisador")
-
+    
+        grupo = get_object_or_404(Group, name="Avaliador")
+        grupo1 = get_object_or_404(Group, name="Pesquisador")
         url = super().form_valid(form)
         self.object.groups.add(grupo)
+        self.object.groups.add(grupo1)
         self.object.save()
 
         return url
 
-
-
-class PesquisadorDelete(DeleteView):
-    template_name = 'administrador/form-excluir.html'
-    sucess_url = reverse_lazy("index")
+    

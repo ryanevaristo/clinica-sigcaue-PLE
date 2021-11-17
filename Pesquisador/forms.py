@@ -39,7 +39,7 @@ class ProtocoloForm(ModelForm):
  
     class Meta:
         model = Protocolo
-        fields = ['titulo_protocolo','justificativa', 'especie', 'quantidade',
+        fields = ['titulo_protocolo','justificativa', 'especie','bioterio', 'quantidade',
         'resumo', 'resumo_en','status', 'data_inicio', 'data_termino'
         ]
         widgets = {
