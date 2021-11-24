@@ -4,13 +4,21 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from Pesquisador.forms import PesquisadorForm
-from Pesquisador.models import User
+from Pesquisador.models import User, Protocolo
 from django.contrib.auth.models import Group
 from django.views.decorators.csrf import csrf_protect
 
 
 
 # Create your views here.
+
+
+class ProtocolPendList(ListView):
+    model = Protocolo
+    template_name = 'secretaria/pendentes/lista-protocolo-pe.html'
+
+    def get_queryset(self):
+        return Protocolo.objects.filter(status="PE")
 
 
 class PesquisadorList(ListView):
@@ -21,7 +29,6 @@ class PesquisadorList(ListView):
         return User.objects.filter(groups=2)
     
 
-        
 
 
 class PesquisadorUpdate(UpdateView):
@@ -32,15 +39,25 @@ class PesquisadorUpdate(UpdateView):
     success_url = reverse_lazy('index')
 
     def form_valid(self, form):
-        
-    
-        grupo = get_object_or_404(Group, name="Avaliador")
-        grupo1 = get_object_or_404(Group, name="Pesquisador")
-        url = super().form_valid(form)
-        self.object.groups.add(grupo)
-        self.object.groups.add(grupo1)
-        self.object.save()
+        avaliador = form.cleaned_data.get('is_avaliador')
+        print(avaliador)
+        try:
+            if avaliador == True:
+                grupo = get_object_or_404(Group, name="Avaliador")
+                grupo1 = get_object_or_404(Group, name="Pesquisador")
+                url = super().form_valid(form)
+                self.object.groups.add(grupo)
+                self.object.groups.add(grupo1)
+                self.object.save()
+                return url
+            else:
+                grupo = get_object_or_404(Group, name="Pesquisador")
+                url = super().form_valid(form)
+                self.object.groups.add(grupo)
+                self.object.save()
+                return url
+        except:
+            print()
 
-        return url
 
     

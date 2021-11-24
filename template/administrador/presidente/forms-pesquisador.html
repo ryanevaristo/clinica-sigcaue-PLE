@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block conteudo %}
-{% if request.user.groups.all.0.name == "Secretária" %}
+{% if request.user.groups.all.0.name == "Administrador" %}
 <link rel="stylesheet" href="{% static 'css/section.css' %}">
 <section style="margin-top: 100px;">
   <div class="container">
@@ -32,17 +32,25 @@
             {{ form.universidade|as_crispy_field }}
           </div>
         </div>
-        {{ form.is_avaliador|as_crispy_field }}
+        {{ form.is_presidente|as_crispy_field }}
         <hr>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
       </form>
     </div>
 </section>
-
 {% else %}
     <a href="{% url 'logout' %}" class="btn btn-primary" >Logout</a>
     <hr>
-    <h2>Você não tem permissão por favor faça o login como secretária</h2>
+    <h2>Você não tem permissão por favor faça o login como Administrador</h2>
 
 {% endif %}
+{% endblock %}
+
+{% block js %}
+
+<script>
+  
+</script>
+
+
 {% endblock %}

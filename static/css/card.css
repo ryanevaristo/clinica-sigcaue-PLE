@@ -5,7 +5,8 @@
     justify-content: space-around;
     flex-wrap: wrap;
   }
-  
+
+
   .card {
     margin: 30px auto;
     width: 300px;
@@ -50,13 +51,10 @@
     text-shadow: black;
     box-shadow:  2px 2px 2px 2px ;
   }
-  #p{
-    color: rgb(143, 139, 139);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.37);
-  }
   
   .title-black {
     color: rgb(58, 52, 52);
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     
   }
   

@@ -4,12 +4,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views.generic.edit import CreateView , UpdateView, DeleteView
 from django.views.generic.list import ListView
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from .models import Bioterio, Protocolo
 from .forms import BioterioForm, ProtocoloForm, PesquisadorForm
-
+from Pesquisador.models import User
 
 
 # Create your views here.
@@ -75,8 +75,9 @@ class ProtocoloCreate(CreateView):
 class ProtocoloUpdate(UpdateView):
     template_name = 'pesquisador/forms-protocolo.html'
     model = Protocolo
-    fields = ['titulo_protocolo', 'justificativa', 'especie', 'quantidade','resumo', 
-    'resumo_en', 'status', 'data_inicio', 'data_termino']
+    fields =['titulo_protocolo','justificativa', 'especie','bioterio', 'quantidade',
+        'resumo', 'resumo_en','status', 'data_inicio', 'data_termino'
+        ]
     success_url = reverse_lazy('index')
 
 

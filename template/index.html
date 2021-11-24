@@ -3,14 +3,22 @@
 
 {% block conteudo %}
 <link rel="stylesheet" href="{% static 'css/card.css' %}">
+<style>
+  p {
+  font-size: 20pt;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  
+  }
+</style>
 <hr>
 {% if request.user.groups.all.0.name == "Pesquisador" %}
-<h3>Bem vindo Pesquisador</h3>
+<h3>Bem vindo Pesquisador :)</h3>
 <hr>
 <div class="cards-list">
 
   <a href="{% url 'lista-protocolo' %}">
-    <div class="card 2">
+    <div class="card 2" style="background-color: black;">
       <div class="card_image">
         <img  src="{% static 'img/pesquisador/protocols.png' %}" />
         </div>
@@ -20,44 +28,10 @@
     </div>
   </a>
   
-    
-  <a href="#">
-    <div class="card 2">
-      <div class="card_image">
-        <img  src="" />
-        </div>
-      <div class="card_title title-white">
-        <p>bloco 2 em desenvolvimento</p>
-      </div>
-    </div>
-  </a>
-  <a href="#">
-    <div class="card 2">
-      <div class="card_image">
-        <img  src="" />
-        </div>
-      <div class="card_title title-white">
-        <p> bloco 3 em desenvolvimento</p>
-      </div>
-    </div>
-  </a>
-
-  <a href="#">
-    <div class="card 2">
-      <div class="card_image">
-        <img  src="" />
-        </div>
-      <div class="card_title title-white">
-        <p> bloco 3</p>
-      </div>
-    </div>
-  </a>
-  
-  
     </div>
 
 {% elif request.user.groups.all.0.name == "Administrador" %}
-<h3>Bem vindo Administrador</h3>
+<h3>Bem vindo Administrador :)</h3>
 <hr>
 <div class="cards-list">
 
@@ -67,7 +41,7 @@
         <img  src="{% static 'img/secretaria/secretaria.png' %}" />
         </div>
         <div class="card_title title-black">
-          <p style="color: black; "> Secretária</p>
+          <p> Secretária</p>
         </div>
       <div class="card_title ">
       </div>
@@ -81,37 +55,27 @@
         <img  src="{% static 'img/admin/bioterio.png' %}"/>
         </div>
         <div class="card_title title-black">
-          <p style="color: black;"> Bioterios</p>
+          <p> Bioterios</p>
         </div>
     </div>
   </a>
-  <a href="#">
-    <div class="card 2">
+  <a href="{% url 'pesqList' %}">
+    <div class="card 2" style="background-color: black;">
       <div class="card_image">
-        <img  src="" />
+        <img  src="{% static 'img/admin/president.png' %}" />
         </div>
       <div class="card_title title-black">
-        <p> em desenvolvimento</p>
+        <p>Presidente</p>
       </div>
     </div>
   </a>
 
-  <a href="#">
-    <div class="card 2">
-      <div class="card_image">
-        <img  src="" />
-        </div>
-      <div class="card_title title-black">
-        <p style="color: black;"> em desenvolvimento</p>
-      </div>
-    </div>
-  </a>
   
 </div>
 
 
 {% elif request.user.groups.all.0.name == "Secretária" %}
-<h3>Bem vindo Administrador</h3>
+<h3>Bem vindo Secrétaria :)</h3>
 <hr>
 <div class="cards-list">
 
@@ -121,42 +85,21 @@
         <img  src="{% static 'img/secretaria/avaliador.png' %}" />
         </div>
         <div class="card_title title-black">
-          <p style="color: black;"> avaliador</p>
+          <p> avaliador</p>
         </div>
       <div class="card_title ">
       </div>
     </div>
   </a>
   
-    
-  <a href="#">
-    <div class="card 2">
-      <div class="card_image">
-        <img  src="" />
-        </div>
-      <div class="card_title title-black">
-        <p>Em desenvolvimento</p>
-      </div>
-    </div>
-  </a>
-  <a href="#">
-    <div class="card 2">
-      <div class="card_image">
-        <img  src="" />
-        </div>
-      <div class="card_title title-black">
-        <p> em desenvolvimento</p>
-      </div>
-    </div>
-  </a>
 
-  <a href="#">
-    <div class="card 2">
+  <a href="{% url 'protocolo-pendente' %}">
+    <div class="card 2" style="background-color: black;">
       <div class="card_image">
-        <img  src="" />
+        <img  src="{% static 'img/secretaria/protocol.png' %}" />
         </div>
       <div class="card_title title-black">
-        <p style="color: black;"> em desenvolvimento</p>
+        <p> Protocolos Pendentes</p>
       </div>
     </div>
   </a>

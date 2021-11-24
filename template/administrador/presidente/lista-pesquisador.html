@@ -10,7 +10,7 @@
     }
 </style>
 
-{% if request.user.groups.all.0.name == "Secretária" %}
+{% if request.user.groups.all.0.name == "Administrador" %}
 <link rel="stylesheet" href="{% static 'css/section.css' %}">
 <h3>Lista de Pesquisadores</h3>
 <hr>
@@ -25,7 +25,7 @@
                 <th>Cpf</th>
                 <th>Universidade</th>
                 <th>Grupo</th>
-                <th>Avaliador</th>
+                <th>Presidente</th>
                 <th>Status</th>
             </tr>
     
@@ -37,13 +37,13 @@
                 <td>{{ pesquisador.cpf }}</td>
                 <td>{{ pesquisador.universidade }}</td>
                 <td>{{ pesquisador.groups.all }}</td>
-                {% if pesquisador.is_avaliador == False %}
+                {% if pesquisador.is_presidente == False %}
                     <td>Não</td>
                 {% else %}
                     <td>Sim</td>
                 {% endif %}
                 <td>
-                    <a href="{% url 'update-pesq' pesquisador.pk %}" class="btn btn-success btn-sm">Adicionar Status</a>
+                    <a href="{% url 'pesqUpdate' pesquisador.pk %}" class="btn btn-success btn-sm">Adicionar Status</a>
                 </td>
     
             </tr>
@@ -55,7 +55,6 @@
         </table>
     </div>
 </section>
-
 
 
 {% else %}

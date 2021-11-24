@@ -3,19 +3,15 @@
 {% load crispy_forms_tags %}
 
 {% block conteudo %}
-<style>
-    .table-responsive {
-        width: 100%;
-    }
-</style>
-{% if request.user.groups.all.0.name == "Pesquisador" %}
+{% if request.user.groups.all.0.name == "Secretária" %}
+
 <link rel="stylesheet" href="{% static 'css/section.css' %}">
-<h3>Lista de Protocolo</h3>
+<h3>Lista de Protocolo Pendentes</h3>
 <hr>
-<section style="margin-top: 10px;"> 
-    <a href="{% url 'cadastrar-protocolo' %}" class="btn btn-primary btn-sm">Cadastrar</a>
+<hr style="color: white;">
+<section style="margin-top: 10px;">
     <div class="table-responsive">
-    
+
         <table class="table table-striped">
             <tr>
                 <th>ID</th>
@@ -23,6 +19,7 @@
                 <th>Biotério</th>
                 <th>Espécie</th>
                 <th>Qtd</th>
+                <th>Status</th>
                 <th>Opções</th>
             </tr>
     
@@ -33,9 +30,9 @@
                 <td>{{ protocolo.bioterio }}</td>
                 <td>{{ protocolo.especie }}</td>
                 <td>{{ protocolo.quantidade }}</td>
+                <td>{{ protocolo.status }}</td>
                 <td>
                  <a href="{% url 'editar-protocolo' protocolo.pk %}" class="btn btn-warning btn-sm" >Editar</a>
-                 <a href="{% url 'excluir-protocolo' protocolo.pk %}" class="btn btn-danger btn-sm" >Excluir</a>
                 </td>
             </tr>
             {% empty %}
@@ -45,14 +42,15 @@
             {% endfor %}
         </table>
     </div>
+    
+    {% else %}
+        <a href="{% url 'logout' %}" class="btn btn-primary" >Logout</a>
+        <hr>
+        <h2>Você não tem permissão por favor faça o login como Secretária</h2>
+    
+    {% endif %}
+
 </section>
 
-
-{% else %}
-    <a href="{% url 'logout' %}" class="btn btn-primary" >Logout</a>
-    <hr>
-    <h2>Você não tem permissão por favor faça o login como Pesquisador</h2>
-
-{% endif %}
 
 {% endblock %}
