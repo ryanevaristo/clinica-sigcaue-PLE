@@ -6,6 +6,7 @@ from .models import Protocolo, Bioterio,User
 from django import forms
 
 class PesquisadorForm(UserCreationForm):
+    nome = forms.CharField(max_length=200)
     email = forms.EmailField(max_length=100)
     idade = forms.CharField(max_length=3)
     cpf = forms.CharField(max_length=14 ,label='CPF')
@@ -15,11 +16,12 @@ class PesquisadorForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ['username','email','idade','cpf','universidade',
+        fields = ['username','nome','email','idade','cpf','universidade',
         'is_avaliador','is_presidente','password1','password2']
 
 
 class PesquisadorChangeForm(UserChangeForm):
+    nome = forms.CharField(max_length=200)
     email = forms.EmailField(max_length=100)
     idade = forms.CharField(max_length=3)
     cpf = forms.CharField(max_length=14 ,label='CPF')
@@ -28,7 +30,7 @@ class PesquisadorChangeForm(UserChangeForm):
     is_presidente = forms.BooleanField(label="Presidente")
     class Meta:
         model = User
-        fields = ['username','email','idade','cpf','universidade',
+        fields = ['username','nome','email','idade','cpf','universidade',
         'is_avaliador','is_presidente']
 
 

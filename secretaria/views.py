@@ -7,11 +7,16 @@ from Pesquisador.forms import PesquisadorForm
 from Pesquisador.models import User, Protocolo
 from django.contrib.auth.models import Group
 from django.views.decorators.csrf import csrf_protect
+from .forms import EncaminharForm
 
 
 
 # Create your views here.
-
+class EncaminharCreate(CreateView):
+    form_class = EncaminharForm
+    template_name = 'secretaria/encaminhar/forms-encaminhar.html'
+    success_url = reverse_lazy('index')
+    
 
 class ProtocolPendList(ListView):
     model = Protocolo
