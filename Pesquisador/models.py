@@ -15,7 +15,8 @@ class User(AbstractUser):
     is_presidente = models.BooleanField('É presidente ?', default=True)
     
     
-
+    def __str__(self):
+       return self.nome
 
 
 class Bioterio(models.Model):
