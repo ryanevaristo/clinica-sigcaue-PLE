@@ -11,13 +11,10 @@ class User(AbstractUser):
     idade = models.CharField(max_length=3,null=True, blank=True)
     cpf = models.CharField(max_length=14 ,verbose_name='CPF',null=True,blank=True)
     universidade = models.CharField(max_length=100,null=True)
-    is_staff = models.BooleanField(default=False, blank=True)
-    is_avaliador = models.BooleanField("É Avaliador ?",default=False, blank=True, null=True)
-    is_presidente = models.BooleanField('É presidente ?',default=False, blank=True)
+    is_avaliador = models.BooleanField("É Avaliador ?",default=True, null=True)
+    is_presidente = models.BooleanField('É presidente ?', default=True)
     
     
-    def __str__(self):
-        return self.nome
 
 
 

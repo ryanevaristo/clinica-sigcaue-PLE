@@ -1,0 +1,50 @@
+{% extends 'model-page.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+<style>
+    .table-responsive {
+        width: 100%;
+    }
+</style>
+{% if request.user.groups.all.0.name == "Avaliador" %}
+<link rel="stylesheet" href="{% static 'css/section.css' %}">
+<h3>Lista de Protocolo</h3>
+<hr>
+<section style="margin-top: 10px;"> 
+    <div class="table-responsive">
+    
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Pesquisador</th>
+                <th>Protocolo</th>
+            </tr>
+    
+            {% for protocolo in object_list %}
+            <tr>
+                <td>{{ protocolo.id }}</td>
+                <td>{{ protocolo.UserProtocolo }}</td>
+                <td>{{ protocolo.ProtocoloEN}}</td>
+
+                
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhum protocolo registrado.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+
+
+{% else %}
+    <a href="{% url 'logout' %}" class="btn btn-primary" >Logout</a>
+    <hr>
+    <h2>Você não tem permissão pagina somente para Avaliador</h2>
+
+{% endif %}
+
+{% endblock %}

@@ -11,7 +11,12 @@
     <hr>
     <form action="" method="POST">
         {% csrf_token %}
-        {{ form|crispy}}
+        {{ form.username|as_crispy_field }}
+        {{ form.nome|as_crispy_field }}
+        {{ form.email|as_crispy_field }}
+        {{ form.idade|as_crispy_field }}
+        {{ form.cpf|as_crispy_field }}
+        {{ form.universidade|as_crispy_field }}
         <hr>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>

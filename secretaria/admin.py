@@ -8,4 +8,6 @@ from .models import Encaminhar
 class EncaminharAdmin(admin.ModelAdmin):
     list_display = ['UserProtocolo']
     list_filter = ['UserProtocolo']
+
+
     

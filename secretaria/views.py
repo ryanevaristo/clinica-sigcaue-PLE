@@ -8,6 +8,7 @@ from Pesquisador.models import User, Protocolo
 from django.contrib.auth.models import Group
 from django.views.decorators.csrf import csrf_protect
 from .forms import EncaminharForm
+from .models import Encaminhar
 
 
 
@@ -17,6 +18,18 @@ class EncaminharCreate(CreateView):
     template_name = 'secretaria/encaminhar/forms-encaminhar.html'
     success_url = reverse_lazy('index')
     
+
+
+class EncaminharList(ListView):
+    model = Encaminhar
+    template_name = 'pesquisador/avaliador/lista-protocolo-pe.html'
+
+    def get_queryset(self):
+        self.object_list = Encaminhar.objects.filter(UserProtocolo=self.request.user)
+        return self.object_list
+        
+    
+
 
 class ProtocolPendList(ListView):
     model = Protocolo
@@ -31,7 +44,7 @@ class PesquisadorList(ListView):
     template_name = 'secretaria/lista-pesquisador.html'
 
     def get_queryset(self):
-        return User.objects.filter(groups=2)
+        return User.objects.filter(groups=5)
     
 
 

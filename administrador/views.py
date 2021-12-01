@@ -47,13 +47,13 @@ class PesquisadorList(ListView):
     template_name = 'administrador/presidente/lista-pesquisador.html'
 
     def get_queryset(self):
-        return User.objects.filter(groups=2)
+        return User.objects.filter(groups=5)
 
 
 class PesquisadorUpdate(UpdateView):
     template_name = 'administrador/presidente/forms-pesquisador.html'
     model = User
-    fields = ['username', 'email', 'idade', 'cpf','universidade', 
+    fields = ['username','nome', 'email', 'idade', 'cpf','universidade', 
     'groups','is_presidente',]
     success_url = reverse_lazy('index')
 

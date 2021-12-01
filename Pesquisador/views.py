@@ -27,12 +27,13 @@ def logout_user(request):
 
 
 class UserCreate(CreateView):
+    login_required = True
     template_name = 'login/forms.html'
     form_class = PesquisadorForm
     success_url = reverse_lazy('index')
 
     def form_valid(self, form):
-    
+
         grupo = get_object_or_404(Group, name="Pesquisador")
 
         url = super().form_valid(form)
@@ -85,11 +86,11 @@ class ProtocoloDelete(DeleteView):
    model = Protocolo
    template_name = 'administrador/form-excluir.html'
    success_url = reverse_lazy('index')
+   
 
 class ProtocoloList(ListView):
     model = Protocolo
     template_name = 'pesquisador/lista-protocolo.html'
-
 
 
 
