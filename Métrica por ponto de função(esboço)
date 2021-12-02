@@ -1,0 +1,102 @@
+Métrica por ponto de função
+Sistema: https://clinica-sigcaue.herokuapp.com/login
+	CONSIDERAÇÕS INICIAIS:
+o	EXEMPLO GERAL DE MÉTRICA DE FUNÇÃO
+ENTRADAS DO USUÁRIO:
+1)	CADASTRAR USUÁRIO
+2)	EDITAR USUÁRIO
+3)	EXCLUIR USUÁRIO
+4)	CADASTRAS SECRETÁRIA
+5)	EXCLUIR SECRETÁRIA
+6)	CADASTRAR AVALIADOR
+7)	ALTERAR STATUS DO AVALIADOR
+8)	EXCLUIR AVALIADOR
+9)	CADASTRAR BIOTÉRIO
+10)	EDITAR BIOTÉRIO
+11)	EXCLUIR BIOTÉRIO
+SAÍDA:
+1)	PEDIDO DEFERIDO
+2)	PEDIDO INDEFERIDO
+ARQUIVOS:
+1)	LISTA DE PROTOCOLOS
+2)	PARECER
+3)	LISTA DE AVALIADORES
+4)	LISTA DE PESQUISADORES
+5)	LISTA DE BIOTÉRIO
+CONSULTA:
+1)	PROTOCOLOS PENDENTES
+2)	AVALIADORES DISPONÍVEIS
+INTERFACE = 1
+PARÂMETRO DE MEDIDA	CONTAGEM	FATOR DE PONDERAÇÃO	
+		SIMPLES	MÉDIO	COMPLEXO	
+Nº ENTRADAS	11	*3	-	-	33
+Nº SAÍDAS	2	*4	-	-	8
+Nº CONSULTAS	2	*3	-	-	6
+Nº ARQUIVOS	5	*7	-	-	35
+Nº INTERFACES	1	*5	-	-	5
+C - TOTAL	------------------------------------------------------------------>	87
+
+     R = 87 PONTOS DE FUNÇÃO
+O PO JUNTAMENTE COM O SCRUM MASTER CONSIDEROU O FATOR DE PONDERAÇÃO COMO SIMPLES.
+OBS: ESTAVAMOS EM DÚVIDA SE ERA POR FUNCIONALIDADE OU GERAL.
+ESSA PRIMEIRA PARTE FOI UMA MÉTRICA GERAL DE PONTOS DE FUNÇÃO SEM FAZER OS AJUSTES FUNÇÃO POR FUNÇÃO.
+CASO SEJA PRECISO FAZER FUNCIONALIDADE POR FUNCIONALIDADE SERÁ ENTREGUE NO RELATÓRIO FINAL.
+	AJUSTE DE PONTO DE FUNÇÃO
+- FÓRMULA UTILIZADA: 
+PONTO DE FUNÇÃO = CONTAGEM – FINAL *(0,65 + 0,01*SOMA Fi)
+ONDE fi é o somatório das perguntas 1 a 14 e a contagem final se encontra na tabela acima.
+- INFLUENCIA:
+	- ESCALA:
+	0 – NENHUMA INFLUENCIA;
+	1 – POUCA INFLUENCIA;
+	2 – MODERADA;
+	3 – MÉDIA
+	4 – SIGNIFICANTE;
+	5 – ESSENCIAL.
+
+1. O sistema exige backup e recuperação confiáveis?
+R:  2.
+2. É requerida comunicação de dados?
+R: 5 
+3. Existem funções de processamento distribuído?
+R: 3 
+4. O desempenho é crítico?
+R: 3 
+5. O sistema funcionará num sistema operacional existente e intensamente utilizado?
+R: 5
+6. São requeridas entrada de dados on-line?
+R: 5 
+7. As entradas on-line requerem que as transações de entrada sejam construídas com várias telas e operações? 
+R: 5
+8. Os arquivos são atualizados on-line?
+R: 5 
+9. Entradas, saídas, arquivos e consultas são complexos?
+R: 3
+10. O processamento interno é complexo?
+R: 2
+11. O código é projetado para ser reutilizável?
+R: 3
+12. A conversão e a instalação estão incluídas no projeto?
+R: 1 
+13. O sistema é projetado para múltiplas instalações em diferentes organizações? 
+R: 1
+14. A aplicação é projetada de forma a facilitar mudanças e o uso pelo usuário?
+R: 2
+
+SOMATÓRIO: 45.
+	APLICAÇÃO DO AJUSTE
+PF = 87 * (0,65 + 0,01 * 45)
+PF = 87 * (0,65 + 0,45)
+PF = 87 * 1,1
+PF = 95,7
+	PRODUTIVIDADE
+
+P = PF/PM, ONDE PM É PESSOA – MÊS.
+
+P = 95,7/4
+
+P = 23,92 PONTOS DE FUNÇÃO POR PESSOA – MÊS.
+
+
+
+
