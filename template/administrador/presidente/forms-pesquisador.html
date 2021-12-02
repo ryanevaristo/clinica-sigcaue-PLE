@@ -36,6 +36,10 @@
           </div>
         </div>
         {{ form.is_presidente|as_crispy_field }}
+        {% for message in messages %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+
         <hr>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
       </form>

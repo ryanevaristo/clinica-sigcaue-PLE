@@ -5,6 +5,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import Group
 from Pesquisador.models import User
+from django.contrib import messages
 
 
 # Create your views here.
@@ -61,6 +62,8 @@ class PesquisadorUpdate(UpdateView):
         presidente = form.cleaned_data.get('is_presidente')
         print(presidente)
         try:
+            lista_presidente = User.objects.filter(groups=4)
+            print(lista_presidente)
             if presidente == False:
                 
                 grupo = get_object_or_404(Group, name="Pesquisador")
@@ -68,8 +71,15 @@ class PesquisadorUpdate(UpdateView):
                 self.object.groups.add(grupo)
                 self.object.save()
                 return url
-            elif presidente == True and User.objects.filter(groups=3) > 1:
                 
+            elif len(lista_presidente) >= 0:
+                messages.error(self.request, "Já existe um Presidente eleito!")
+                return redirect('pesqList')
+            else:
+                if len(lista_presidente) >= 0:
+                    messages.error(self.request, "Já existe um Presidente eleito!")
+                    return redirect('pesqList')
+                    
                 grupo = get_object_or_404(Group, name="Presidente")
                 grupo1 = get_object_or_404(Group, name="Pesquisador")
                 url = super().form_valid(form)
@@ -77,7 +87,7 @@ class PesquisadorUpdate(UpdateView):
                 self.object.groups.add(grupo1)
                 self.object.save()
                 return url
-            else:
-                print("SO pode ter 1 presidente")
+
         except:
-            print()
+            return redirect('pesqList')
+            
