@@ -38,9 +38,9 @@ class Protocolo(models.Model):
 
 
     STATUS_CHOICES = [
-    ('AP', 'APROVADO'),
-    ('RE', 'REPROVADO'),
-    ('PE', 'PENDENTE'),
+    ('APROVADO', 'APROVADO'),
+    ('REPROVADO', 'REPROVADO'),
+    ('PENDENTE', 'PENDENTE'),
 ]
 
     titulo_protocolo = models.CharField('Titulo', max_length=100, null=True)
@@ -52,7 +52,7 @@ class Protocolo(models.Model):
     data_termino = models.DateField("Data de Termino")
     especie = models.CharField("Espécie", max_length=50)
     quantidade = models.IntegerField()
-    status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='PE', blank=True)
+    status = models.CharField(max_length=9, choices=STATUS_CHOICES, default='PE', blank=True)
 
     def __str__(self):
         return self.titulo_protocolo       

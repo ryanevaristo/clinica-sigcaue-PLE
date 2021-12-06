@@ -7,8 +7,8 @@ from Pesquisador.forms import PesquisadorForm
 from Pesquisador.models import User, Protocolo
 from django.contrib.auth.models import Group
 from django.views.decorators.csrf import csrf_protect
-from .forms import EncaminharForm
-from .models import Encaminhar
+from .forms import EncaminharForm, EncaminharFormAP
+from .models import Encaminhar, EncaminharAP
 
 
 
@@ -18,10 +18,22 @@ class EncaminharCreate(CreateView):
     template_name = 'secretaria/encaminhar/forms-encaminhar.html'
     success_url = reverse_lazy('index')
     
-
+class EncaminharAPCreate(CreateView):
+    form_class = EncaminharFormAP
+    template_name = 'secretaria/encaminhar/forms-encaminhar.html'
+    success_url = reverse_lazy('index')
 
 class EncaminharList(ListView):
     model = Encaminhar
+    template_name = 'pesquisador/avaliador/lista-protocolo-pe.html'
+
+    def get_queryset(self):
+        self.object_list = Encaminhar.objects.filter(UserProtocolo=self.request.user)
+        return self.object_list
+
+
+class EncaminharAPList(ListView):
+    model = EncaminharAP
     template_name = 'pesquisador/avaliador/lista-protocolo-pe.html'
 
     def get_queryset(self):
@@ -36,7 +48,17 @@ class ProtocolPendList(ListView):
     template_name = 'secretaria/pendentes/lista-protocolo-pe.html'
 
     def get_queryset(self):
-        return Protocolo.objects.filter(status="PE")
+        return Protocolo.objects.filter(status="PENDENTE")
+
+
+
+class ProtocolAprovList(ListView):
+    model = Protocolo
+    template_name = 'secretaria/pendentes/lista-protocolo-pe.html'
+
+
+    def get_queryset(self):
+        return Protocolo.objects.filter(status="APROVADO")
 
 
 class PesquisadorList(ListView):

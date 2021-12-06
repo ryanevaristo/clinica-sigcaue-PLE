@@ -20,6 +20,8 @@
                 <th>ID</th>
                 <th>Pesquisador</th>
                 <th>Protocolo</th>
+                <th>status</th>
+                <th>editar</th>
             </tr>
     
             {% for protocolo in object_list %}
@@ -27,6 +29,10 @@
                 <td>{{ protocolo.id }}</td>
                 <td>{{ protocolo.UserProtocolo }}</td>
                 <td>{{ protocolo.protocoloEN}}</td>
+                <td>{{ protocolo.protocoloEN.status}}</td>
+                <td>
+                    <a href="{% url 'editar-protocolo' protocolo.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                </td>
                 
             </tr>
             {% empty %}

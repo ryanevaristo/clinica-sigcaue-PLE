@@ -8,7 +8,7 @@
         width: 100%;
     }
 </style>
-{% if request.user.groups.all.0.name == "Pesquisador" %}
+{% if request.user.groups.all.0.name == "Pesquisador" or request.user.groups.all.1.name == "Pesquisador" %}
 <link rel="stylesheet" href="{% static 'css/section.css' %}">
 <h3>Lista de Protocolo</h3>
 <hr>

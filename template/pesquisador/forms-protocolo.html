@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block conteudo %}
-{% if request.user.groups.all.0.name == "Pesquisador" %}
+{% if request.user.groups.all.0.name == "Pesquisador" or request.user.groups.all.1.name == "Pesquisador" %}
 <link rel="stylesheet" href="{% static 'css/section.css' %}">
 <section style="margin-top: 100px;">
   <div class="container" style="margin-bottom: 100px;">
@@ -59,9 +59,10 @@
 
 
 {% block js %}
-
+{% if request.user.groups.all.0.name == "Pesquisador" %}
 <script>
   $('#id_status').prop( "disabled", true )
 </script>
+{% endif %}
 
 {% endblock %}
