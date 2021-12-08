@@ -7,12 +7,16 @@
     .table-responsive {
         width: 100%;
     }
+    .btn{
+        margin-bottom: 10px;
+    }
 </style>
 {% if request.user.groups.all.0.name == "Avaliador" %}
 <link rel="stylesheet" href="{% static 'css/section.css' %}">
 <h3>Lista de Protocolo</h3>
 <hr>
 <section style="margin-top: 10px;"> 
+    <a href="{% url 'parecer' %}" class="btn btn-primary btn-sm">Cadastrar</a>
     <div class="table-responsive">
     
         <table class="table table-striped">
