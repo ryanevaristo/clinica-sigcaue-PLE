@@ -12,7 +12,7 @@ class User(AbstractUser):
     cpf = models.CharField(max_length=14 ,verbose_name='CPF',null=True,blank=True)
     universidade = models.CharField(max_length=100,null=True)
     is_avaliador = models.BooleanField("É Avaliador ?",default=True, null=True)
-    is_presidente = models.BooleanField('É presidente ?', default=True)
+    is_presidente = models.BooleanField('É presidente ?', default=False)
     
     
     def __str__(self):

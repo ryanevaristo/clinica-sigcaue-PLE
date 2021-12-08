@@ -72,11 +72,8 @@ class PesquisadorUpdate(UpdateView):
                 self.object.save()
                 return url
                 
-            elif len(lista_presidente) >= 0:
-                messages.error(self.request, "Já existe um Presidente eleito!")
-                return redirect('pesqList')
             else:
-                if len(lista_presidente) >= 0:
+                if len(lista_presidente) > 0:
                     messages.error(self.request, "Já existe um Presidente eleito!")
                     return redirect('pesqList')
                     
