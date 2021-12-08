@@ -7,8 +7,8 @@ from django.views.generic.list import ListView
 from django.contrib.auth.models import Group
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from .models import Bioterio, Emitir, Protocolo
-from .forms import BioterioForm, ProtocoloForm, PesquisadorForm, EmitirForm
+from .models import Bioterio, Emitir, Protocolo, Parecer
+from .forms import BioterioForm, ProtocoloForm, PesquisadorForm, EmitirForm , ParecerForm
 from Pesquisador.models import User
 from secretaria.models import EncaminharAP, Encaminhar
 
@@ -125,17 +125,20 @@ class EncaminharAPList(ListView):
         self.object_list = Encaminhar.objects.filter(UserProtocolo=self.request.user)
         return self.object_list
 
-class EmitirCreate(CreateView):
-    template_name = 'pesquisador/presidente/parecer.html'
-    form_class = EmitirForm
+
+
+class ParecerCreate(CreateView):
+    template_name = 'pesquisador/avaliador/forms-parecer.html'
+    form_class = ParecerForm
     success_url = reverse_lazy('index')
 
-class EmitirUpdate(UpdateView):
-    template_name = 'pesquisador/presidente/parecer.html'
-    model = Emitir
-    fields = ['protocoloEM', 'assinado']
+class ParecerUpdate(UpdateView):
+    template_name = 'pesquisador/avaliador/forms-parecer.html'
+    model = Parecer
+    fields = '__all__'
     success_url = reverse_lazy('index')
 
-class EmitirList(ListView):
-    model = Emitir
-    template_name = 'pesquisador/presidente/lista-protocolo-ap.html'
+
+class ParecerList(ListView):
+    model = Parecer
+    template_name = 'pesquisador/avaliador/listar-parecer.html'

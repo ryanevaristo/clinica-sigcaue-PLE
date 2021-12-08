@@ -19,7 +19,8 @@ urlpatterns = [
     path('lista/bioterio/', views.BioterioList.as_view(), name="lista-bioterio"),
 
     path('listar/encaminhar/aprovado',views.EncaminharAPList.as_view(), name="listarAP"),
-    path('create/parecer/', views.EmitirCreate.as_view(), name='Emitir'),
-    path('editar/parecer/<int:pk>/', views.EmitirUpdate.as_view(), name='EditarEM'),    
-    path('listar/parecer/', views.EmitirList.as_view(), name='ListarEM'),
+
+    path('criar/parecer/', views.ParecerCreate.as_view(), name='parecer'),
+    path('edita/parecer/<int:pk>/', views.ParecerUpdate.as_view(), name='EditarParecer'),    
+    path('lista/parecer/', views.ParecerList.as_view(), name='ListaParecer'),
 ]

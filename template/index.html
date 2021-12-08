@@ -12,7 +12,26 @@
   }
 </style>
 <hr>
-{% if request.user.groups.all.1.name == "Pesquisador" or request.user.groups.all.0.name == "Pesquisador" %}
+
+{% if request.user.groups.all.0.name == "Presidente" %}
+<h3>Bem vindo Presidente :)</h3>
+<hr>
+<div class="cards-list">
+
+  <a href="{% url 'protocolo-pendente' %}">
+    <div class="card 2" style="background-color: black;">
+      <div class="card_image">
+        <img  src="{% static 'img/secretaria/avaliador.png' %}" />
+        </div>
+        <div class="card_title title-black">
+          <p>Aprovar Protocolo</p>
+        </div>
+      <div class="card_title ">
+      </div>
+    </div>
+  </a>
+
+{% elif  request.user.groups.all.0.name == "Pesquisador" or  request.user.groups.all.1.name == "Pesquisador" %}
 <h3>Bem vindo Pesquisador :)</h3>
 <hr>
 <div class="cards-list">
@@ -28,7 +47,7 @@
     </div>
   </a>
   {% if request.user.groups.all.0.name == "Avaliador" %}
-    <a href="{% url 'listar1' %}">
+    <a href="{% url 'ListaParecer' %}">
       <div class="card 2" style="background-color: black;">
         <div class="card_image">
           <img  src="{% static 'img/pesquisador/protocols.png' %}" />
@@ -126,48 +145,12 @@
     </div>
   </a>
 
-  <a href="{% url 'encaminhar' %}">
-    <div class="card 2" style="background-color: black;">
-      <div class="card_image">
-        <img  src="{% static 'img/secretaria/check-list.png' %}" />
-        </div>
-      <div class="card_title title-black">
-        <p>Encaminhar Protocolo</p>
-      </div>
-    </div>
-  </a>
 
-  <a href="{% url 'encaminharAP' %}">
-    <div class="card 2" style="background-color: black;">
-      <div class="card_image">
-        <img  src="{% static 'img/secretaria/protocols.png' %}" />
-        </div>
-      <div class="card_title title-black">
-        <p>Encaminhar Protocolo Aprovados</p>
-      </div>
-    </div>
-  </a>
   
 </div>
 
 
-{% elif request.user.groups.all.0.name == "Presidente" %}
-<h3>Bem vindo Presidente :)</h3>
-<hr>
-<div class="cards-list">
 
-  <a href="{% url 'ListarEM' %}">
-    <div class="card 2" style="background-color: black;">
-      <div class="card_image">
-        <img  src="{% static 'img/secretaria/avaliador.png' %}" />
-        </div>
-        <div class="card_title title-black">
-          <p>Emitir Parecer</p>
-        </div>
-      <div class="card_title ">
-      </div>
-    </div>
-  </a>
   
 
 

@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block conteudo %}
-{% if request.user.groups.all.0.name == "Secretária" %}
+{% if request.user.groups.all.0.name == "Secretária" or request.user.groups.all.0.name == "Presidente"  %}
 
 <link rel="stylesheet" href="{% static 'css/section.css' %}">
 <h3>Lista de Protocolo</h3>

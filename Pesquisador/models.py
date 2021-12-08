@@ -63,5 +63,16 @@ class Emitir(models.Model):
         ('Assinado', 'Assinado')
     ]
 
-    protocoloEM = models.ForeignKey(Protocolo,on_delete=models.CASCADE,verbose_name="Escolha o Protocolo",limit_choices_to={'status': 'APROVADO'})
+    protocoloEM = models.ForeignKey(Protocolo,on_delete=models.CASCADE,verbose_name="Escolha o Protocolo",limit_choices_to={'status': 'PENDENTE'})
     assinatura = models.CharField(max_length=12, choices=ASSINADO_CHOICES, default='Assinado', blank=True)
+
+
+
+class Parecer(models.Model):
+    RECOMENDADO_CHOICES = [
+        ('Não-recomendado', 'Não Recomendado'),
+        ('Recomendado', 'Recomendado')
+    ]
+    desc_parecer = models.TextField( verbose_name="Descrição: ")
+    protocoloParecer = models.ForeignKey(Protocolo,on_delete=models.CASCADE,verbose_name="Escolha o Protocolo",limit_choices_to={'status': 'PENDENTE'})
+    recomendado = models.CharField(max_length=15, choices=RECOMENDADO_CHOICES, default='Recomendado', blank=True)

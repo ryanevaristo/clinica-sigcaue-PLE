@@ -2,7 +2,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.db.models import fields
 from django.forms import ModelForm
-from .models import Emitir, Protocolo, Bioterio,User
+from .models import Emitir, Protocolo, Bioterio,User,Parecer
 from django import forms
 
 class PesquisadorForm(UserCreationForm):
@@ -61,3 +61,10 @@ class EmitirForm(ModelForm):
     class Meta:
         model = Emitir
         fields = ['protocoloEM', 'assinatura']
+
+
+class ParecerForm(ModelForm):
+    
+    class Meta:
+        model = Parecer
+        fields =  '__all__'
