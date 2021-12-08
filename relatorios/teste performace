@@ -9,10 +9,10 @@ Período de teste: 29.11.2021 (14h às 15h)
 Ambiente de teste:
 Sistema  disponível no Docker com banco xyz
 Ferramenta JMeter
-Servidor Linux com 4gb ram ....
+Servidor Windows10 com 8gb ram ...
 Cenário de teste funcional exploratório
 
-Cenário de teste de performance
+Cenário de teste de performance:
 Nome: Teste de performance Cenário 1
 Descrição: Testar a tela principal da Clínica
 Protocolo: http
@@ -35,8 +35,8 @@ Quantidade de usuário simultâneos: 160
 Tempo de inicialização: 5 segundos
 Interações: 5
 
-Relatório de execução
-Vídeo capturado: link
+Relatório de execução:
+
 Cenário 1
 Percentual de erro: 36.07%
 Vazão: 7.6/sec
@@ -48,6 +48,7 @@ Vazão: 4.6/sec
 Cenário 3
 Percentual de erro: 40.07%
 Vazão 1.7/sec
+
 
 Relatório: A média de erros foram essas demonstradas acima, infelizmente não conseguimos encontrar a causa desses erros,  mas continuamos avançando na programação do software e atingindo sempre o objetivo das próximas sprints.
 

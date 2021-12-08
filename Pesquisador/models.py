@@ -52,7 +52,16 @@ class Protocolo(models.Model):
     data_termino = models.DateField("Data de Termino")
     especie = models.CharField("Espécie", max_length=50)
     quantidade = models.IntegerField()
-    status = models.CharField(max_length=9, choices=STATUS_CHOICES, default='PE', blank=True)
+    status = models.CharField(max_length=9, choices=STATUS_CHOICES, default='PENDENTE', blank=True)
 
     def __str__(self):
         return self.titulo_protocolo       
+
+class Emitir(models.Model):
+    ASSINADO_CHOICES = [
+        ('Não-assinado', 'Não assinado'),
+        ('Assinado', 'Assinado')
+    ]
+
+    protocoloEM = models.ForeignKey(Protocolo,on_delete=models.CASCADE,verbose_name="Escolha o Protocolo",limit_choices_to={'status': 'APROVADO'})
+    assinatura = models.CharField(max_length=12, choices=ASSINADO_CHOICES, default='Assinado', blank=True)

@@ -7,9 +7,11 @@ from django.views.generic.list import ListView
 from django.contrib.auth.models import Group
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from .models import Bioterio, Protocolo
-from .forms import BioterioForm, ProtocoloForm, PesquisadorForm
+from .models import Bioterio, Emitir, Protocolo
+from .forms import BioterioForm, ProtocoloForm, PesquisadorForm, EmitirForm
 from Pesquisador.models import User
+from secretaria.models import EncaminharAP, Encaminhar
+
 
 
 # Create your views here.
@@ -114,3 +116,26 @@ class BioterioDelete(DeleteView):
 class BioterioList(ListView):
     model = Bioterio
     template_name = 'pesquisador/lista-bioterio.html'
+
+class EncaminharAPList(ListView):
+    model = EncaminharAP
+    template_name = 'pesquisador/presidente/lista-protocolo-ap.html'
+
+    def get_queryset(self):
+        self.object_list = Encaminhar.objects.filter(UserProtocolo=self.request.user)
+        return self.object_list
+
+class EmitirCreate(CreateView):
+    template_name = 'pesquisador/presidente/parecer.html'
+    form_class = EmitirForm
+    success_url = reverse_lazy('index')
+
+class EmitirUpdate(UpdateView):
+    template_name = 'pesquisador/presidente/parecer.html'
+    model = Emitir
+    fields = ['protocoloEM', 'assinado']
+    success_url = reverse_lazy('index')
+
+class EmitirList(ListView):
+    model = Emitir
+    template_name = 'pesquisador/presidente/lista-protocolo-ap.html'

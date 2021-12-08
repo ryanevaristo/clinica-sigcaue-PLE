@@ -1,0 +1,52 @@
+{% extends 'model-page.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+<style>
+    .table-responsive {
+        width: 100%;
+    }
+</style>
+{% if request.user.groups.all.0.name == "Presidente" %}
+<link rel="stylesheet" href="{% static 'css/section.css' %}">
+<h3>Lista de Protocolo</h3>
+<hr>
+<section style="margin-top: 10px;">
+    <div class="table-responsive">
+
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Nome do Protocolo</th>
+                <th>Situação</th>
+            </tr>
+
+            {% for parecer in object_list %}
+            <tr>
+                <td>{{ parecer.id }}</td>
+                <td>{{ parecer.protocoloEM }}</td>
+                <td>{{ parecer.assinado}}</td>
+                <td>
+                    <a href="{% url 'encaminharAP' parecer.pk %}" class="btn btn-sucess btn-sm">Emitir parecer</a>
+                </td>
+
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhum parecer registrado.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+
+
+{% else %}
+<a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+<hr>
+<h2>Você não tem permissão pagina somente para Presidente</h2>
+
+{% endif %}
+
+{% endblock %}
