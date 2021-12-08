@@ -12,42 +12,7 @@ Ferramenta JMeter
 Servidor Linux com 4gb ram ....
 Cenário de teste funcional exploratório
 
-Cenário de teste de performance
-Nome: Teste de performance Cenário 1
-Descrição: Testar a tela principal da Clínica
-Protocolo: http
-Endereço: https://clinica-sigcaue.herokuapp.com/
-Quantidade de usuário simultâneos: 45
-Tempo de inicialização: 5 segundos
-Interações: 5
 
-Nome: Teste de performance Cenário 2
-Protocolo: http
-Endereço: https://clinica-sigcaue.herokuapp.com/
-Quantidade de usuário simultâneos: 90
-Tempo de inicialização: 5 segundos
-Interações: 5
-
-Nome: Teste de performance Cenário 3
-Protocolo: http
-Endereço: https://clinica-sigcaue.herokuapp.com/
-Quantidade de usuário simultâneos: 160
-Tempo de inicialização: 5 segundos
-Interações: 5
-
-Relatório de execução
-Vídeo capturado: link
-Cenário 1
-Percentual de erro: 36.07%
-Vazão: 7.6/sec
-
-Cenário 2
-Percentual de erro: 38.89%
-Vazão: 4.6/sec
-
-Cenário 3
-Percentual de erro: 40.07%
-Vazão 1.7/sec
 
 Relatório: A média de erros foram essas demonstradas acima, infelizmente não conseguimos encontrar a causa desses erros,  mas continuamos avançando na programação do software e atingindo sempre o objetivo das próximas sprints.
 
