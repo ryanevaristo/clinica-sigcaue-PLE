@@ -11,7 +11,6 @@ from .forms import EncaminharForm, EncaminharFormAP
 from .models import Encaminhar, EncaminharAP
 
 
-
 # Create your views here.
 class EncaminharCreate(CreateView):
     form_class = EncaminharForm
@@ -30,18 +29,7 @@ class EncaminharList(ListView):
     def get_queryset(self):
         self.object_list = Encaminhar.objects.filter(UserProtocolo=self.request.user)
         return self.object_list
-
-
-class EncaminharAPList(ListView):
-    model = EncaminharAP
-    template_name = 'pesquisador/avaliador/lista-protocolo-pe.html'
-
-    def get_queryset(self):
-        self.object_list = Encaminhar.objects.filter(UserProtocolo=self.request.user)
-        return self.object_list
-        
     
-
 
 class ProtocolPendList(ListView):
     model = Protocolo
