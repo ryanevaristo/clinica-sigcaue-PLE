@@ -11,5 +11,4 @@ urlpatterns = [
     path('listar/encaminhar/',views.EncaminharList.as_view(), name="listar1"),
     #APROVADO
     path('create/encaminhar/aprovado', views.EncaminharAPCreate.as_view(), name="encaminharAP"),
-    path('listar/encaminhar/aprovado',views.EncaminharList.as_view(), name="listarAP"),
 ]

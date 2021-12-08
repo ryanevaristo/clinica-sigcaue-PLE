@@ -1,0 +1,44 @@
+Plano de teste
+Nome da aplicação: Clínica Sigcaue
+Alvo do teste
+Tipo de teste: Performance e Stress
+Objetivo
+Performance: Verificar se o sistema atende, sem perda de pacotes, o acesso simultâneo de 2000 usuários.
+Stress: Identificar o limite máximo de usuários simultâneos no sistema sem perda de pacote.
+Período de teste: 06.12.2021 (14h às 15h)
+Ambiente de teste:
+Sistema  disponível no Docker com banco xyz
+Ferramenta JMeter
+Servidor Linux com 4gb ram ....
+Cenário de teste funcional exploratório
+
+Cenário de teste de performance
+Nome: Teste de performance Cenário 1
+Descrição: Testar a tela principal da Clínica
+Protocolo: http
+Endereço: https://clinica-sigcaue.herokuapp.com/
+Quantidade de usuário simultâneos: 1000
+Tempo de inicialização: 0,6 segundos
+Interações: 30
+
+Nome: Teste de performance Cenário 2
+Protocolo: http
+Endereço: https://clinica-sigcaue.herokuapp.com/
+Quantidade de usuário simultâneos: 2000
+Tempo de inicialização: 0,6 segundos
+Interações: 30
+
+
+Relatório de execução
+Vídeo capturado: link
+Cenário 1
+Percentual de erro: 0.00%
+Vazão: 198,0/sec
+
+Cenário 2
+Percentual de erro: 2,13%
+Vazão: 196,7/sec
+
+
+Relatório: A média de erros foram essas demonstradas acima, infelizmente não conseguimos encontrar a causa desses erros, 
+mas continuamos avançando na programação do software e atingindo sempre o objetivo das próximas sprints.

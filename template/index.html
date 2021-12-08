@@ -152,17 +152,17 @@
 
 
 {% elif request.user.groups.all.0.name == "Presidente" %}
-<h3>Bem vindo Secrétaria :)</h3>
+<h3>Bem vindo Presidente :)</h3>
 <hr>
 <div class="cards-list">
 
-  <a href="{% url 'lista-pesq' %}">
+  <a href="{% url 'ListarEM' %}">
     <div class="card 2" style="background-color: black;">
       <div class="card_image">
         <img  src="{% static 'img/secretaria/avaliador.png' %}" />
         </div>
         <div class="card_title title-black">
-          <p> Emitir Parecer</p>
+          <p>Emitir Parecer</p>
         </div>
       <div class="card_title ">
       </div>
